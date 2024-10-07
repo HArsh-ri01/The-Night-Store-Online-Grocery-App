@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monthly Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {background-color: #f5f5f5;}
+    </style>
+</head>
+<body>
+    <h2>Monthly Report for {{ user.username }}</h2>
+
+    <table>
+        <tr>
+            <th>Order ID</th>
+            <th>Total Price</th>
+            <th>Order Date</th>
+            <th>Order Items</th>
+        </tr>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>${{ order.total_price }}</td>
+                <td>{{ order.order_date.strftime('%Y-%m-%d') }}</td>
+                <td>
+                    <table>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Product Price</th>
+                        </tr>
+                        {% for item in order.order_items %}
+                            <tr>
+                                <td>{{ item.product_name }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>Rs.{{ item.product.price_per_unit }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <p>Total Expenditure: ${{ total_expenditure }}</p>
+</body>
+</html>

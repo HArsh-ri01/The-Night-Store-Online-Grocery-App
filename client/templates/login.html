@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- Include the CSS styles for the component -->
+
+</head>
+
+<body>
+  <div id="app">
+    <!-- The component will be rendered here -->
+    <login></login>
+  </div>
+
+  <!-- Include the Vue library -->
+  <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+  <!-- Include the Axios library if needed -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- Include the compiled JavaScript file for the Vue component -->
+  <script src="login.js"></script>
+
+  <script>
+    // Mount the Vue component
+    new Vue({
+      el: '#app',
+      components: {
+        login: login
+      }
+    });
+  </script>
+</body>
+
+</html>
